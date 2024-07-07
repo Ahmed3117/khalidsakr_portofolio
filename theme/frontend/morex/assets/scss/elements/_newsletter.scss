@@ -1,0 +1,233 @@
+/*
+    10. Newsletter css
+*/
+.footer__newsletter{
+    margin-top: 2rem;
+}
+.newsletter__subscribe{
+    &--form{
+        gap: 1.5rem;
+        @media only screen and (max-width: 1599px) {
+            flex-direction: column;
+        }
+        & label{
+            position: relative;
+            & svg{
+                position: absolute;
+                left: 13px;
+                top: 50%;
+                transform: translatey(-50%);
+            }
+        }
+    }
+    &--input{
+        width: 190px;
+        height: 4.5rem;
+        border: 1px solid var(--border-color);
+        font-size: 1.3rem;
+        padding: 0 1rem 0 3rem;
+        border-radius: 0.5rem;
+        @media only screen and (max-width: 1599px) {
+           width: 100%;
+        }
+        &.width-100{
+            width: 100%;
+            @media only screen and (max-width: 991px) {
+                height: 4rem;
+            }
+        }
+        &:focus{
+            border-color: var(--secondary-color);
+        }
+    }
+    &--button{
+        border: 0;
+        background: var(--secondary-color);
+        height: 4.5rem;
+        padding: 0 1.5rem;
+        color: var(--text-white-color);
+        border-radius: 0.5rem;
+        &:hover{
+            background: var(--hover-color);
+        }
+        @media only screen and (max-width: 1599px) {
+            width: 150px;
+        }
+    }
+}
+
+
+/*
+    home three newsletter css
+*/
+.newsletter__content{
+    @media only screen and (min-width: 576px) {
+        position: absolute;
+        top: 50%;
+        left: 3rem;
+        transform: translatey(-50%);
+    }
+    @media only screen and (min-width: 768px) {
+        left: 4rem;
+    }
+    @media only screen and (min-width: 992px) {
+        left: 6rem;
+    }
+    @media only screen and (max-width: 575px) {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    & button.primary__btn{
+        @media only screen and (max-width: 479px) {
+            max-width: 10rem;
+            margin: 0 auto;
+        }
+    }
+}
+.newsletter__subscribe--svg{
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translatey(-50%);
+}
+.newsletter__subscribe--style{
+    &__form{
+        gap: 2rem;
+        @media only screen and (max-width: 575px) {
+            justify-content: center;
+        }
+        @media only screen and (max-width: 479px) {
+            flex-direction: column;
+        }
+        & label{
+            &.width-300{
+                width: 100%;
+                @media only screen and (min-width: 400px) {
+                    width: 27rem;
+                    margin: 0 auto;
+                }
+                @media only screen and (min-width: 480px) {
+                    width: 20rem;
+                }
+                @media only screen and (min-width: 768px) {
+                    width: 25rem;
+                }
+                @media only screen and (min-width: 992px) {
+                    width: 30rem;
+                }
+                
+            }
+        }
+    }
+}
+.newsletter__subtitle{
+    gap: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    color: var(--hover-color);
+    @media only screen and (min-width: 768px) {
+        font-size: 1.6rem;
+    }
+    @media only screen and (min-width: 992px) {
+        font-size: 1.8rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        font-size: 2rem;
+    }
+    @media only screen and (max-width: 575px) {
+        justify-content: center;
+    }
+    &.mb-30{
+        @media only screen and (max-width: 767px) {
+            margin-bottom: 1.5rem;
+        }
+    }
+    
+}
+.newsletter__title{
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    @media only screen and (min-width: 400px) {
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    @media only screen and (min-width: 768px) {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+    @media only screen and (min-width: 992px) {
+        font-size: 3.3rem;
+        line-height: 4.8rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        font-size: 4rem;
+        line-height: 6rem;
+    }
+}
+
+
+/*
+    home four newsletter css
+*/
+.newsletter__section--bg{
+    background: url(../img/banner/banner-bg-5.png);
+    padding: 5rem 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    @media only screen and (min-width: 1366px) {
+        padding: 6.2rem 0;
+    }
+}
+.newsletter__inner--flex{
+    gap: 2rem;
+    @media only screen and (max-width: 1365px) {
+        flex-direction: column;
+    }
+    @media only screen and (min-width: 576px) {
+        gap: 3rem;
+    }
+}
+.newsletter__content--left {
+    position: relative;
+    gap: 2rem;
+    margin-right: 3rem;
+    padding-right: 3rem;
+    @media only screen and (max-width: 991px) {
+        gap: 1.5rem;
+        margin-right: 0;
+        padding-right: 0;
+        &::before{
+            display: none;
+        }
+    }
+    &::before{
+        position: absolute;
+        content: "";
+        width: 0.1rem;
+        height: 3rem;
+        background: var(--foreground-sub-color);
+        right: 0;
+        top: 50%;
+        transform: translatey(-50%);
+        @media only screen and (min-width: 1366px) {
+            height: 5rem;
+        }
+    }
+}
+.newsletter__content--style4{
+    @media only screen and (max-width: 991px) {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    &__title{
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        @media only screen and (min-width: 768px) {
+            font-size: 1.8rem;
+            line-height: 2.4rem;
+        }
+
+    }
+}

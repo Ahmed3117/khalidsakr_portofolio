@@ -1,0 +1,250 @@
+/* 
+    11. Portfolio css 
+*/
+.portfolio__section--bg{
+    background: var(--bg-offwhite-color);
+}
+
+.filters-button-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    @media only screen and (min-width: 576px) {
+        gap: 3rem;
+    }
+    @media only screen and (min-width: 768px) {
+        gap: 4rem;
+    }
+}
+
+.filters__button--items{
+    background: inherit;
+    padding: 0;
+    border: 0;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    font-weight: 500;
+    &.is-checked{
+        color: var(--secondary-color);
+    }
+    @media only screen and (min-width: 480px) {
+        font-size: 1.8rem;
+    }
+    @media only screen and (min-width: 768px) {
+        font-size: 1.8rem;
+    }
+}
+.portfolio__grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+}
+.element-item{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 3rem;
+    width: 50%;
+    @media only screen and (min-width: 992px) {
+        width: 33.33%;
+    }
+}
+.portfolio__card{
+    position: relative;
+    overflow: hidden;
+    &::before{
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: var(--secondary-color);
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: .3s;
+        z-index: 1;
+    }
+    &:hover{
+        &::before{
+            opacity: 0.6;
+        }
+        & .portfolio__content{
+            opacity: 1;
+            bottom: 1.8rem;
+            @media only screen and (min-width: 480px) {
+                bottom: 2.5rem;
+            }
+            @media only screen and (min-width: 1200px) {
+                bottom: 3.5rem;
+            }
+        }
+        & .portfolio__zoom{
+            margin-bottom: 1.2rem;
+            @media only screen and (min-width: 480px) {
+                margin-bottom: 3rem;
+            }
+            @media only screen and (min-width: 576px) {
+                margin-bottom: 5rem;
+            }
+            @media only screen and (min-width: 992px) {
+                margin-bottom: 3rem;
+            }
+            @media only screen and (min-width: 1200px) {
+                margin-bottom: 6rem;
+            }
+        }
+        & .portfolio__image--card{
+            & img{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+}
+.portfolio__content {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+    bottom: 1rem;
+    transition: .3s;
+    opacity: 0;
+    z-index: 1;
+    @media only screen and (min-width: 480px) {
+        left: 2.5rem;
+        right: 2.5rem;
+        bottom: 1.5rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        bottom: 2.5rem;
+    }
+}
+.portfolio__zoom{
+    margin-bottom: 1rem;
+    transition: .3s;
+    @media only screen and (min-width: 480px) {
+        margin-bottom: 5rem;
+    }
+    @media only screen and (min-width: 576px) {
+        margin-bottom: 7rem;
+    }
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 5rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 8rem;
+    }
+}
+.portfolio__title{
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    transition: .3s;
+    margin-bottom: 1.2rem;
+    @media only screen and (min-width: 576px) {
+        font-size: 2.2rem;
+        line-height: 2.6rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        margin-bottom: 1.5rem;
+    }
+    @media only screen and (max-width: 767px) {
+        margin-bottom: 0;
+    }
+}
+.portfolio__desc{
+    transition: .3s;
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+}
+
+
+.portfolio__modal--body{
+       padding: 5rem 1.5rem 3rem;
+    @media only screen and (min-width: 480px) {
+        padding: 5rem 3rem 3rem;
+    }
+}
+.portfolio__modal--dialog{
+    max-width: 75rem;
+    & .modal-content{
+        border-radius: 1rem;
+    }
+    @media only screen and (max-width: 991px) {
+        padding: 0 3rem;
+    }
+    @media only screen and (max-width: 767px) {
+        padding: 0 1.5rem;
+    }
+    @media only screen and (max-width: 479px) {
+        padding: 0 0.5rem;
+    }
+}
+.portfolio__modal{
+    &--title{
+        font-size: 2.2rem;
+        line-height: 2.4rem;
+        color: var(--secondary-color);
+        font-weight: 700;
+        @media only screen and (min-width: 480px) {
+            font-size: 2.5rem;
+            line-height: 3rem;
+        }
+        @media only screen and (min-width: 768px) {
+            font-size: 2.8rem;
+            line-height: 3.2rem;
+        }
+        @media only screen and (min-width: 1200px) {
+            font-size: 3.2rem;
+            line-height: 3.6rem;
+        }
+    }
+    &--info{
+        gap: 2rem;
+        @media only screen and (max-width: 767px) {
+            flex-direction: column;
+            align-items: flex-start !important;
+        }
+        &--text{
+            font-size: 1.6rem;
+            line-height: 2rem;
+            margin-bottom: 1.2rem;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        &__icon{
+            margin-right: 1rem;
+        }
+        &__desc{
+            font-size: 1.6rem;
+        }
+        &__name{
+            font-weight: 600;
+        }
+    }
+}
+.portfolio__modal--colse{
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background: var(--secondary-color);
+    color: var(--text-white-color);
+    border: 0;
+    right: 2rem;
+    top: 1rem;
+    opacity: 1;
+    border-radius: 50%;
+    z-index: 9;
+    &:hover{
+        background: var(--primary-color);
+        color: var(--text-white-color);
+    }
+    @media only screen and (min-width: 768px) {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}

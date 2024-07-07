@@ -1,0 +1,71 @@
+/*
+    6. brand css
+*/
+.brand__section--inner{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    align-items: center;
+    @media only screen and (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    }
+}
+.brand__logo{
+    &--items{
+        text-align: center;
+        padding: 2.5rem 2rem;
+        min-height: 103px;
+        border-bottom: 1px solid #DDDDDD;
+        &:last-child{
+            border-bottom: 0;
+            @media only screen and (max-width: 767px) {
+                border-bottom: 1px solid #DDDDDD;
+            }
+        }
+        
+        @media only screen and (min-width: 768px) {
+            padding: 3rem 2.5rem;
+            min-height: 108px;
+        }
+        @media only screen and (min-width: 992px) {
+            padding: 4rem 0;
+            min-height: 130px;
+        }
+    }
+    &--img{
+        margin: 0 auto;
+        opacity: 0.7;
+        &:hover{
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        &.brand_logo_dark{
+            display: none;
+        }
+    }
+    &--child{
+        border-right: 1px solid #DDDDDD;
+        &:last-child{
+            border-right: 0;
+            @media only screen and (max-width: 767px) {
+                & .brand__logo--items{
+                    &:last-child{
+                        border-bottom: 0;
+                    }
+                }
+            }
+            
+        }
+        @media only screen and (max-width: 767px) {
+            &:nth-child(2){
+                border-right: 0;
+            }
+            &:nth-child(3){
+                & .brand__logo--items{
+                    &:last-child{
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

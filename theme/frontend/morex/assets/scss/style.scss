@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/*
+  Template Name: Morex - Personal Portfolio HTML Template
+  Author Name: Hook theme
+  Author URL: https://themeforest.net/user/hooktheme
+  Version: 1.0.0
+
+  ----------------------------
+  [Table of contents CSS] 
+  ----------------------------
+
+    1. Base CSS
+    2. Header css
+    3. Hero css
+    4. About css
+    5. Blog css
+    6. brand css
+    7. Contact page css 
+    8. Footer css
+    9. home three css
+    10. Newsletter css
+    11. Portfolio css
+    12. preloader css 
+    13. Resume css
+    14. services css
+    15. Skills css
+    16. testimonial css
+
+*/
+
+@import 'global';
+@import 'elements/header';
+@import 'elements/preloader';
+@import 'elements/hero';
+@import 'elements/blog';
+@import 'elements/footer';
+@import 'elements/newsletter';
+@import 'elements/contact';
+@import 'elements/portfolio';
+@import 'elements/services';
+@import 'elements/about';
+@import 'elements/brand';
+@import 'elements/resume';
+@import 'elements/skills';
+@import 'elements/testimonial';
+@import 'elements/home-three';
+
+
+
+

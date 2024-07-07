@@ -1,0 +1,164 @@
+/* 
+    7. Contact page css 
+*/
+.contact__section--bg{
+    background: url(../img/other/contact-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 6rem 0 27.5rem;
+    @media only screen and (min-width: 768px) {
+        padding: 7rem 0 28.5rem;
+    }
+    @media only screen and (min-width: 992px) {
+        padding: 8rem 0 30rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        padding: 10rem 0 32rem;
+    }
+}
+.contact__input--field{
+    height: 4.5rem;
+    width: 100%;
+    background: var(--body-background-color);
+    border: 1px solid transparent;
+    padding: 0.2rem 2rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    &:focus{
+        border-color: var(--secondary-color);
+    }
+}
+.contact__textarea--field{
+    height: 15rem;
+    width: 100%;
+    background: var(--body-background-color);
+    border: 1px solid transparent;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    &:focus{
+        border-color: var(--secondary-color);
+    }
+}
+.contact__button {
+    margin-top: 2rem;
+    padding: 0 2rem;
+    @media only screen and (min-width: 992px) {
+        margin-top: 3rem;
+        padding: 0 3rem;
+    }
+    @media only screen and (min-width: 1366px) {
+        margin-top: 5rem;
+        padding: 0 4rem;
+    }
+}
+
+.contact__info{
+    @media only screen and (min-width: 992px) {
+       padding-left: 3rem;
+    }
+    @media only screen and (min-width: 1366px) {
+       padding-left: 5rem;
+    }
+    @media only screen and (max-width: 991px) {
+       display: flex;
+       gap: 3rem;
+       margin-top: 3rem;
+    }
+    @media only screen and (max-width: 767px) {
+       flex-wrap: wrap;
+    }
+    &--icon{
+        width: 5rem;
+        height: 5rem;
+        background: var(--secondary-color);
+        color: var(--text-white-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        @media only screen and (min-width: 992px) {
+            width: 6rem;
+            height: 6rem;
+        }
+        @media only screen and (min-width: 1200px) {
+            width: 7rem;
+            height: 7rem;
+        }
+        & svg{
+            @media only screen and (max-width: 991px) {
+                width: 2rem;
+            }
+        }
+    }
+    &--items{
+        gap: 2rem;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            margin-bottom: 0;
+        }
+        @media only screen and (max-width: 767px) {
+           margin-bottom: 0;
+        }
+    }
+    &--title{
+        font-size: 2rem;
+        line-height: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        @media only screen and (min-width: 992px) {
+            font-size: 2.2rem;
+            line-height: 2.8rem;
+        }
+        @media only screen and (min-width: 1366px) {
+            font-size: 2.5rem;
+        }
+    }
+    &--desc{
+        font-size: 1.6rem;
+        line-height: 3rem;
+        @media only screen and (min-width: 992px) {
+            font-size: 1.7rem;
+            line-height: 3.2rem;
+        }
+        @media only screen and (min-width: 1366px) {
+            font-size: 1.8rem;
+        }
+    }
+}
+.contact__map--area{
+    margin-top: -22rem;
+}
+.contact__map--iframe{
+    width: 100%;
+    height: 30rem;
+    @media only screen and (min-width: 992px) {
+        height: 40rem;
+    }
+}
+
+.contact__page--style{
+    & .contact__input--field{
+        border: 1px solid var(--border-color);
+        &:focus{
+            border-color: var(--secondary-color);
+        }
+    }
+    & .contact__textarea--field{
+        border: 1px solid var(--border-color);
+        &:focus{
+            border-color: var(--secondary-color);
+        }
+    }
+}
+.contact__page--map{
+    margin-top: 0;
+    & .contact__map--iframe{
+        border: 1px solid var(--secondary-color) !important;
+    }
+}

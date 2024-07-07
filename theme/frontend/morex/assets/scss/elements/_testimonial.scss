@@ -1,0 +1,121 @@
+/*
+    16. testimonial css
+*/
+.testimonial__author{
+    &--media{
+        margin: 0 auto 2.5rem;
+    }
+    &--title{
+        font-size: 2.2rem;
+        line-height: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    &--subtitle{
+        font-size: 1.7rem;
+        line-height: 2rem;
+        color: var(--foreground-sub-color);
+    }
+}
+.rating__icon{
+    & svg{
+        stroke: #ffce31;
+        fill: #ffce31;
+    }
+}
+.rating__wrapper{
+    gap: 0.5em;
+    margin-bottom: 1.5rem;
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 2rem;
+    }
+}
+.rating__list{
+    line-height: 2.2rem;
+}
+.testimonial__desc{
+    font-size: 1.8rem;
+    line-height: 3rem;
+    font-weight: 100;
+    font-style: italic;
+    opacity: 0.8;
+    @media only screen and (min-width: 992px) {
+        font-size: 2rem;
+        line-height: 3.3rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        font-size: 2.2rem;
+        line-height: 3.5rem;
+    }
+    @media only screen and (min-width: 1366px) {
+        font-size: 2.4rem;
+        line-height: 3.8rem;
+    }
+}
+.testimonial__swiper--activation{
+    max-width: 100%;
+    padding-bottom: 4rem;
+    @media only screen and (min-width: 480px) {
+        max-width: 82%;
+    }
+    @media only screen and (min-width: 768px) {
+        max-width: 72%;
+    }
+    @media only screen and (min-width: 992px) {
+        max-width: 64%;
+    }
+}
+.testimonial__position--icon{
+    position: absolute;
+    content: "";
+    top: 38%;
+    @media only screen and (max-width: 479px) {
+        display: none;
+    }
+    &.left{
+        left: 2%;
+        @media only screen and (min-width: 768px) {
+            left: 3%;
+        }
+        @media only screen and (min-width: 992px) {
+            left: 5%;
+        }
+        @media only screen and (min-width: 1600px) {
+            left: 8%;
+        }
+        @media only screen and (min-width: 1870px) {
+            left: 13%;
+        }
+    }
+    &.right{
+        right: 2%;
+        @media only screen and (min-width: 768px) {
+            right: 3%;
+        }
+        @media only screen and (min-width: 992px) {
+            right: 5%;
+        }
+        @media only screen and (min-width: 1600px) {
+            right: 8%;
+        }
+        @media only screen and (min-width: 1870px) {
+            right: 13%;
+        }
+    }
+    color: var(--secondary-color);
+    opacity: 0.3;
+    & svg{
+        @media only screen and (max-width: 1599px) {
+            width: 20rem;
+        }
+        @media only screen and (max-width: 1365px) {
+            width: 10rem;
+        }
+        @media only screen and (max-width: 991px) {
+            width: 6rem;
+        }
+        @media only screen and (max-width: 767px) {
+            width: 4rem;
+        }
+    }
+}

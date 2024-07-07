@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="main__content_wrapper hero__section ">
+    <!-- Start slider section -->
+    <div class="section--padding">
+        <div class="container">
+            
+                    <div class=" row d-flex justify-content-center hero__section--inner2">
+                        <div class="col-lg-9 col-sm-12 col-md-12">
+                            <!-- Start portfolio section -->
+                            
+
+                            <div class="button-group filters-button-group mb-50">
+                                <button class="filters__button--items button is-checked" data-filter="*" onclick="filterCenters(this)">الكل</button>
+                                {% for government in governments %}
+                                <button class="filters__button--items button" data-filter="{{ government.id }}" onclick="filterCenters(this)">{{ government.name }}</button>
+                                {% endfor %}
+                            </div>
+                            <div class="row d-flex justify-content-center mb-5" id="centers-container">
+                                {% for center in centers %}
+                                    {% if center.status %}
+                                        <div class="col-lg-3 col-md-5 col-sm-10 center-card" data-government="{{ center.government.id }}">
+                                            <div class="portfolio__card">
+                                                <a href="{% url "centersplaces:centerdates" center.id %}" class="display-block">
+                                                    <div class="portfolio__image--card">
+                                                        <img src="{% static "imgs/white_card.png" %}" alt="img">
+                                                        <h3 class="portfolio__base_title text-white">{{ center.name }}</h3>
+                                                    </div>
+                                                    <div class="portfolio__content">
+                                                        <h3 class="portfolio__title text-white">{{ center.name }}</h3>
+                                                        <h5 class="text-white">{{ center.location }}</h5>
+                                                        {% for centercontact in center.centercontact_set.all %}
+                                                        <h5 class="text-white">{{ centercontact.phone }}</h5>
+                                                        {% endfor %}
+                                                        {% for centercontact in center.centercontact_set.all %}
+                                                        <h5 class="text-white">{{ centercontact.mail }}</h5>
+                                                        {% endfor %}
+                                                        
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                                    
+                            <!-- End portfolio section -->
+                        </div>
+                        <div class="col-3">
+                            {% include "side.html" %}
+                        </div>
+                    </div>
+
+
+        </div>
+    </div>
+    <!-- End slider section -->
+
+</main>
+
+
+<script>
+    function filterCenters(button) {
+        var filterValue = button.getAttribute('data-filter');
+        var centers = document.querySelectorAll('.center-card');
+
+        centers.forEach(function(center) {
+            if (filterValue === '*' || center.getAttribute('data-government') === filterValue) {
+                center.style.display = 'block';
+            } else {
+                center.style.display = 'none';
+            }
+        });
+
+        // Update button active state
+        var buttons = document.querySelectorAll('.filters__button--items');
+        buttons.forEach(function(btn) {
+            btn.classList.remove('is-checked');
+        });
+        button.classList.add('is-checked');
+    }
+</script>
+{% endblock content %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="main__content_wrapper hero__section ">
+    <!-- Start slider section -->
+    <div class="section--padding">
+        <div class="container">
+            
+                    <div class=" row d-flex justify-content-center hero__section--inner2">
+                        <div class="col-lg-9 col-sm-12 col-md-12">
+                            <!-- Start portfolio section -->
+                            
+
+                            <div class="button-group filters-button-group mb-50">
+                                <button class="filters__button--items button is-checked" data-filter="*" onclick="filterDates(this)">الكل</button>
+                                {% for classobj in classes %}
+                                <button class="filters__button--items button" data-filter="{{ classobj.id }}" onclick="filterDates(this)">{{ classobj.name }}</button>
+                                {% endfor %}
+                            </div>
+                            <div class="row d-flex justify-content-center mb-5" id="centers-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-text" scope="col">الصف</th>
+                                            <th class="table-text" scope="col">اليوم</th>
+                                            <th class="table-text" scope="col">الساعة</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for date in center_dates %}
+                                        <tr class="date-row" data-class="{{ date.class_obj.id }}">
+                                            <td class="table-text">{{ date.class_obj }}</td>
+                                            <td class="table-text">{{ date.get_date_day_display }}</td>
+                                            <td class="table-text">{{ date.date_time|time:"H:i A" }}</td>
+                                        </tr>
+                                        {% empty %}
+                                        <tr>
+                                            <td colspan="3" class="table-text text-center ">
+                                                <span class="section__heading--subtitle">
+                                                لا توجد مواعيد بعد 
+                                                </span>
+                                                <span class="home__navigation--menu__icon mx-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ee5f38" d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>                                            </td>
+                                                </span>
+                                            </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            
+                            
+                                    
+                            <!-- End portfolio section -->
+                        </div>
+                        <div class="col-3">
+                            {% include "side.html" %}
+                        </div>
+                    </div>
+
+
+        </div>
+    </div>
+    <!-- End slider section -->
+
+</main>
+
+
+<script>
+
+
+    function filterDates(button) {
+        var filterValue = button.getAttribute('data-filter');
+        var rows = document.querySelectorAll('.date-row');
+
+        rows.forEach(function(row) {
+            if (filterValue === '*' || row.getAttribute('data-class') === filterValue) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Update button active state
+        var buttons = document.querySelectorAll('.filters__button--items');
+        buttons.forEach(function(btn) {
+            btn.classList.remove('is-checked');
+        });
+        button.classList.add('is-checked');
+    }
+
+</script>
+
+
+{% endblock content %}

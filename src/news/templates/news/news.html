@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<main class="main__content_wrapper hero__section--inner2">
+  <!-- Start slider section -->
+  <div class="hero__section row  m-5">
+    <div class="container col-lg-9 col-sm-12 col-md-12 ">
+      <div class="main__content_wrapper inner__page--content">
+        <div class="resume__step">
+          <div class="border__position--style"></div>
+
+
+          {% for notification in notifications %}
+    {% if notification.status and notification.is_current %}
+        <div class="resume__items">
+            <div class="border__round"></div>
+            <div class="resume__items--inner d-flex">
+                <div class="resume__content">
+                    <div class="resume__content--top d-flex align-items-center mb-10">
+                        <h3 class="resume__content--title">{{ notification.title }}</h3>
+                        {% if notification.priority == 'urgent' %}
+                            <span class="resume__content--subtitle">{{ notification.get_priority_display }}</span>
+                        {% endif %}
+                    </div>
+                    <p class="resume__content--desc mb-20">
+                        {{ notification.description }}
+                    </p>
+                    <span class="resume__date">{{ notification.date_added }}</span>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+        {% include "side.html" %}
+    </div>
+  </div>
+  <!-- End slider section -->
+</main>
+{% endblock content %}

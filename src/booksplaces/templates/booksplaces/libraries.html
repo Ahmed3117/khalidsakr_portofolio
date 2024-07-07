@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="main__content_wrapper hero__section ">
+    <!-- Start slider section -->
+    <div class="section--padding">
+        <div class="container">
+            
+                
+
+                    
+            <div class="row d-flex justify-content-center hero__section--inner2">
+                <div class="col-lg-9 col-sm-12 col-md-12">
+                    <!-- Start portfolio section -->
+                    <section class="portfolio__section section--padding">
+                        <div class="container">
+                            <div class="portfolio__section--inner">
+                                <div class="button-group filters-button-group mb-50">
+                                    <button class="filters__button--items button is-checked" data-filter="*" onclick="filterLibraries(this)">الكل</button>
+                                    {% for government in governments %}
+                                    <button class="filters__button--items button" data-filter="{{ government.id }}" onclick="filterLibraries(this)">{{ government.name }}</button>
+                                    {% endfor %}
+                                </div>
+                                <div class="row d-flex justify-content-center" id="libraries-container">
+                                    {% for library in libraries %}
+                                        {% if library.status %}
+                                            <div class="col-lg-4 col-md-5 col-sm-12 services__card library-card" data-government="{{ library.government.id }}">
+                                                <span class="services__card--icon color3 mb-10">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+                                                        <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                                                    </svg>
+                                                </span>
+                                                <div class="services__card--content">
+                                                    <h4 class="services__card--title mb-15">{{ library.name }}</h4>
+                                                    <h4 class="mb-15">{{ library.location }}</h4>
+                                                    <div class="contact__info--content mb-15">
+                                                        <h6 class="contact__info--title">تواصل :</h6>
+                                                        <div>
+                                                            {% for librarycontact in library.librarycontact_set.all %}
+                                                            <a href="tel:+2{{ librarycontact.phone }}">{{ librarycontact.phone }}</a>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <div>
+                                                            {% for librarycontact in library.librarycontact_set.all %}
+                                                            <a href="mailto:{{ librarycontact.mail }}">{{ librarycontact.mail }}</a>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                    <a class="primary__btn" href="{% url "booksplaces:books" library.id %}">تصفح الكتب</a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End portfolio section -->
+                </div>
+                <div class="col-3">
+                    {% include "side.html" %}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- End slider section -->
+
+</main>
+
+
+<script>
+    function filterLibraries(button) {
+        var filterValue = button.getAttribute('data-filter');
+        var libraries = document.querySelectorAll('.library-card');
+
+        libraries.forEach(function(library) {
+            if (filterValue === '*' || library.getAttribute('data-government') === filterValue) {
+                library.style.display = 'block';
+            } else {
+                library.style.display = 'none';
+            }
+        });
+
+        // Update button active state
+        var buttons = document.querySelectorAll('.filters__button--items');
+        buttons.forEach(function(btn) {
+            btn.classList.remove('is-checked');
+        });
+        button.classList.add('is-checked');
+    }
+</script>
+
+{% endblock content %}

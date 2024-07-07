@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <title>Morex - Personal Portfolio HTML Template</title>
+  <meta name="description" content="Morden Bootstrap HTML5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="{{site_logo}} ">
+    
+   <!-- ======= All CSS Plugins here ======== -->
+  <link rel="stylesheet" href="{% static "assets/css/plugins/swiper-bundle.min.css" %} ">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Plugin css -->
+  <link rel="stylesheet" href="{% static "assets/css/vendor/bootstrap.min.css" %} ">
+
+  <!-- Custom Style CSS -->
+  <link rel="stylesheet" href="{% static "assets/css/style.css" %} ">
+
+  <!-- Dark css here -->
+  <link rel="stylesheet" href="{% static "assets/css/dark.css" %} ">
+
+  <!-- Rtl css here -->
+  <link rel="stylesheet" href="{% static "assets/css/rtl.css" %} ">
+
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.documentElement.classList.add("dark");
+    } 
+    if (localStorage.getItem("theme-color") === "light") {
+      document.documentElement.classList.remove("dark");
+    } 
+  </script>
+
+</head>
+
+<body class="bg-dark_primary_bg">
+
+    <!-- Preloader start -->
+    <div id="preloader">
+        <div class="loader--border"></div>
+    </div>
+    <!-- Preloader end -->
+
+    <div class="home2__hero--bg">
+        
+
+        {% include "nav.html" %}
+        {% block content %}{% endblock content %}
+
+        {% include "footer.html" %}
+    </div>
+
+    
+
+    <!-- Scroll top bar -->
+    <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round"  stroke-width="48" d="M112 244l144-144 144 144M256 120v292"/></svg></button>
+    
+   <!-- All Script JS Plugins here  -->
+   <script src="{% static "assets/js/vendor/popper.js" %} " defer="defer"></script>
+   <script src="{% static "assets/js/vendor/bootstrap.min.js" %} " defer="defer"></script>
+   <script src="{% static "assets/js/plugins/swiper-bundle.min.js" %} "></script>
+   <script src="{% static "assets/js/plugins/isotope.pkgd.min.js" %} "></script>
+
+  <!-- Customscript js -->
+  <script src="{% static "assets/js/script.js" %} "></script>
+
+  <!-- Dark to light js -->
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.getElementById("light__to--dark")?.classList.add("dark--version");
+    } 
+    if (localStorage.getItem("theme-color") === "light") {
+      document.getElementById("light__to--dark")?.classList.remove("dark--version");
+    } 
+  </script>
+  
+</body>
+</html>

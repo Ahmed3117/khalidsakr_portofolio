@@ -1,0 +1,143 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<main class="main__content_wrapper hero__section--inner2">
+  <!-- Start slider section -->
+  <div class="hero__section row  m-5">
+    <div class="container col-lg-9 col-sm-12 col-md-12 ">
+      <div class="main__content_wrapper inner__page--content">
+        
+        {% comment %} <div class="page__heading">
+            <h1 class="page__heading--title">تواصل</h1>
+            <h2 class="page__heading--subtitle">تواصل</h2> 
+        </div> {% endcomment %}
+        
+        <!-- Start contact section -->
+        <section class="contact__section contact__page--style section--padding">
+            <div class="container">
+                <div class="row align-items-center">
+
+
+                    <div class="col-lg-6">
+                        <div class="contact__left">
+                            <div class="section__heading mb-50">
+                                
+                                <h2 class=" mb-10">ارسل استفسارك على الايميل :</h2> 
+                                
+                            </div>
+                            <form class="contact__form" action="#">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+                                        <input name='sender_name' id='sender_name' class="contact__input--field" placeholder="Your name" type="text">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+                                        <input name='sender_mail' id='sender_mail' class="contact__input--field" placeholder="Your email" type="text">
+                                        <input name='receiver_mail' id='receiver_mail' hidden  type="text" value="{{account.mail}}" >
+                                    </div>
+                                    
+                                </div>
+                                <textarea name='sent_message' id='sent_message' class="contact__textarea--field" placeholder="Message"></textarea>
+                                <button id='send_button' class="contact__button primary__btn">ارسال</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="contact__info">
+                            <div class="contact__info--items d-flex align-items-center">
+                                <span class="contact__info--icon">
+                                    <svg width="25" height="34" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path></svg>
+                                </span>
+                                <div class="contact__info--content">
+                                    <h2 class="">اتصل على :</h2>
+                                    <p class="contact__info--desc">
+                                        {% for phone in account.phone_set.all %}
+                                        <br>
+                                        <a href="tel:+2{{phone.phone_number}}">{{phone.phone_number}}</a>
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="contact__info--items d-flex align-items-center">
+                                <span class="contact__info--icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </span>
+                                <div class="contact__info--content">
+                                    <h2 class="">الايميل :</h2>
+                                    <p class="contact__info--desc">
+                                        
+                                        <br>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ account.mail }}">{{ account.mail }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="contact__info--items d-flex align-items-center">
+                                <span class="contact__info--icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </span>
+                                <div class="contact__info--content">
+                                    <h3 class="contact__info--title">العنوان :</h3>
+                                    <p class="contact__info--desc">
+                                        {{account.address}} <br>
+                                            
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End contact section -->
+    </div> 
+    </div>
+
+    <div class="col-3">
+        {% include "side.html" %}
+    </div>
+  </div>
+  <!-- End slider section -->
+</main>
+
+
+<!-- contact.html -->
+<script>
+    document.querySelector('.contact__form').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        let sender_name = document.getElementById('sender_name').value;
+        let sender_mail = document.getElementById('sender_mail').value;
+        let sent_message = document.getElementById('sent_message').value;
+        let receiver_mail = document.getElementById('receiver_mail').value;
+    
+        let formData = new FormData();
+        formData.append('sender_name', sender_name);
+        formData.append('sender_mail', sender_mail);
+        formData.append('sent_message', sent_message);
+        formData.append('receiver_mail', receiver_mail);
+    
+        fetch('{% url "contact:send_contact_email" %}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.querySelector('.contact__form').reset();
+                alert('Message sent successfully!');
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });
+    </script>
+    
+
+{% endblock content %}

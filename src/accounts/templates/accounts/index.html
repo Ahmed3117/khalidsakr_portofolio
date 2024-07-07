@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+        <main class="main__content_wrapper hero__section--inner2">
+            <!-- Start slider section -->
+            <div class="hero__section">
+                <div class="container">
+                    
+
+
+
+                        <div class="row ">
+                            <div class="col-lg-9 col-sm-12 col-md-12">
+                                <!-- Start sevices section -->
+                                
+                                <section class="row d-flex align-items-center">
+                                
+                                    <div class="col-lg-6 col-sm-12 col-md-12 hero__thumbnail position__relative">
+                                        <img class="hero__thumbnail--media " src="{% static "imgs/index/hero-thumbnail.png" %} " alt="img">
+                                        {% if account.image %}
+                                        <img class="hero__thumbnail--media " src="{{account.image.url}}" alt="img" style="position: absolute; top: 0; left: 0;">
+                                        {% endif %}
+                                        <span class="">
+                                            <img class="logo__positioning one logo-size" src="{% static "imgs/ch3.png" %} " alt="logo">
+                                        </span>
+                                        <span >
+                                            <img class="logo__positioning two logo-size" src="{% static "imgs/ch2.png" %} " alt="logo">
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 col-md-12 hero__content ">
+                                        <span class="hero__content--subtitle text__secondary mb-10">مرحبا انا</span>
+                                        <h2 class="hero__content--title mb-15"> {{account.name}} </h2>
+                                        <h3 class="hero__content--subtitle2 mb-20">{{account.caption}}</h3>
+                                        <p class="hero__content--desc mb-30">{{account.description}} </p>
+                                        
+                                        <div class="social__share style2 d-flex align-items-center">
+                                            <span class="social__share--title">تابعنى على : </span>
+                                            <ul class="social__share--wrapper d-flex">
+                                                {% for social in account.socialaccount_set.all %}
+                                                {% if social.icon and social.url %}
+                                                <li class="social__share--child">
+                                                    <a class="social__share--link" href="{{social.url}}">
+                                                        <img style="width:20px;height:20px;" src="{{social.icon.url}}" />
+                                                    </a>
+                                                </li>
+                                                {% endif %}
+                                                {% endfor %}
+                                                
+                                            </ul>
+                                        </div>
+                                        
+                                    </div>
+                                
+                                </section>
+                                
+                                <!-- End sevices section -->
+                            </div>
+                            <div class="col-3">
+                                {% include "side.html" %}
+                            </div>
+                        </div>
+
+
+
+                    
+                </div>
+            </div>
+            <!-- End slider section -->
+
+        
+        </main>
+{% endblock content %}
